@@ -5,7 +5,8 @@ WriteMakefile(
     'NAME'		=> 'POE::Component::SubWrapper',
     'VERSION_FROM'	=> 'SubWrapper.pm', # finds $VERSION
     'PREREQ_PM'		=> { 'POE' => 0.11,
-                             'Devel::Symdump' => 2.01
+                             'Devel::Symdump' => 2.01,
+			     'Test::More' => 0.08,
 			   },
     'dist' => { 'COMPRESS' => 'gzip -9f',
                 'SUFFIX' => 'gz',

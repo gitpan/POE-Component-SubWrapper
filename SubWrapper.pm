@@ -26,7 +26,7 @@ require Exporter;
 @EXPORT = qw( poeize 
 	
 );
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 sub DEBUG () { 0 }
 
@@ -188,7 +188,7 @@ The test scripts are the best place to look for examples of POE::Component::Subw
 
   use Data::Dumper;
   poeize Data::Dumper;
-  $kernel->post('Data::Dumper', 'Dumper', [ { a => 1, b => 2 ], 'callback_state, 'SCALAR');
+  $kernel->post('Data::Dumper', 'Dumper', [ { a => 1, b => 2 } ], 'callback_state', 'SCALAR');
 
   sub callback_handler {
     my $result = @_[ARG0];

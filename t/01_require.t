@@ -1,18 +1,9 @@
 #!/usr/bin/perl -w
 
 use strict;
+use Test::More tests => 2;
 
-$| = 1;
-
-print "1..1\n";
-
-eval "
-  use POE;
-  use POE::Component::SubWrapper;
-";
-
-if ($@) {
-  print "not ";
+BEGIN {
+	use_ok('POE');
+	use_ok('POE::Component::SubWrapper');
 }
-
-print "ok 1\n";

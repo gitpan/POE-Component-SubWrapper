@@ -1,6 +1,8 @@
 #!/usr/bin/perl -w
 
 use strict;
+use Test::More tests => 4;
+
 sub POE::Kernel::ASSERT_DEFAULT () {1}
 sub POE::Kernel::TRACE_DEFAULT () { 0 }
 use POE qw(Component::SubWrapper);
@@ -22,10 +24,6 @@ sub various {
 package main;
 
 sub DEBUG () { 0 }
-
-$| = 1;
-
-print "1..4\n";
 
 # setup a tester
 
@@ -106,29 +104,8 @@ $poe_kernel->run();
 
 # check results
 
-my $count = 1;
-
-if ($error) {
-  print "not ";
-} 
-
-print "ok $count\n";
-$count++;
-
-if ($correct != 2) {
-  print "not ";
-}
-print "ok $count\n";
-$count++;
-
-if ($scalar_ok != 1) {
-  print "not ";
-}
-print "ok $count\n";
-$count++;
-
-if ($array_ok != 1) {
-  print "not ";
-}
-print "ok $count\n";
+ok(!$error, "No errors");
+is($correct, 2, "2 correct");
+is($scalar_ok, 1, "scalar ok");
+is($array_ok, 1, "array ok");
 
