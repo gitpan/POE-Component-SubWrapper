@@ -1,0 +1,7 @@
+Changes
+MANIFEST
+README
+Makefile.PL
+SubWrapper.pm
+t/01_require.t
+t/02_wrap.t
