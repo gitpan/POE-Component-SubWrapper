@@ -3,8 +3,6 @@
 use strict;
 use Test::More tests => 4;
 
-sub POE::Kernel::ASSERT_DEFAULT () {1}
-sub POE::Kernel::TRACE_DEFAULT () { 0 }
 use POE qw(Component::SubWrapper);
 use Data::Dumper;
 poeize Data::Dumper;
@@ -97,6 +95,7 @@ POE::Session->create (
               callback => \&test_callback,
               callback_tm_scalar => \&test_callback_tm_scalar,
               callback_tm_array => \&test_callback_tm_array,
+              _child => sub { 0 },
                    }
   );
 

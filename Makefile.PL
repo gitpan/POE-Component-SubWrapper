@@ -3,15 +3,14 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     'NAME'		=> 'POE::Component::SubWrapper',
-    'VERSION_FROM'	=> 'SubWrapper.pm', # finds $VERSION
-    'PREREQ_PM'		=> { 'POE' => 0.11,
+    'VERSION_FROM'	=> 'VERSION', # finds $VERSION
+    'PREREQ_PM'		=> { 'POE' => 0.23,
                              'Devel::Symdump' => 2.01,
 			     'Test::More' => 0.08,
 			   },
     'dist' => { 'COMPRESS' => 'gzip -9f',
                 'SUFFIX' => 'gz',
               },
-    'AUTHOR' => 'Michael Stevens <michael@etla.org>',
-    'PM' => {'SubWrapper.pm' => '${INST_LIBDIR}/SubWrapper.pm'},
+    'AUTHOR' => 'sungo (eek+cpan@eekeek.org)',
     'ABSTRACT' => 'Event based module interface',
 );

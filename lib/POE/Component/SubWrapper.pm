@@ -213,6 +213,8 @@ to be wrapped.
 
 =head1 AUTHOR
 
+sungo - eek+cpan@eekeek.org
+
 Michael Stevens - michael@etla.org.
 
 =head1 SEE ALSO

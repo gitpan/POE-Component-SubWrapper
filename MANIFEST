@@ -1,7 +1,9 @@
 Changes
+LICENSE
 MANIFEST
-README
 Makefile.PL
-SubWrapper.pm
+README
+VERSION
+lib/POE/Component/SubWrapper.pm
 t/01_require.t
 t/02_wrap.t

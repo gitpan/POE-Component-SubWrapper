@@ -20,9 +20,10 @@ Required:
 
 This module currently requires the following CPAN modules:
 
-  POE - Version 0.11
+  POE - Version 0.24
   Devel::Symdump - Version 2.01
 
 Author:
 
+sungo - eek+cpan@eekeek.org
 Michael Stevens - michael@etla.org
