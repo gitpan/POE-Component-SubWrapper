@@ -4,7 +4,9 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'		=> 'POE::Component::SubWrapper',
     'VERSION_FROM'	=> 'SubWrapper.pm', # finds $VERSION
-    'PREREQ_PM'		=> { 'POE' => 0.11 }, # e.g., Module::Name => 1.1
+    'PREREQ_PM'		=> { 'POE' => 0.11,
+                             'Devel::Symdump' => 2.01
+			   },
     'dist' => { 'COMPRESS' => 'gzip -9f',
                 'SUFFIX' => 'gz',
               },

@@ -3,6 +3,7 @@ package POE::Component::SubWrapper;
 use strict;
 use Carp qw(croak);
 use POE;
+use Devel::Symdump;
 use vars qw(@ISA %EXPORT_TAGS @EXPORT @EXPORT_OK $VERSION);
 
 require Exporter;
@@ -25,7 +26,7 @@ require Exporter;
 @EXPORT = qw( poeize 
 	
 );
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 sub DEBUG () { 0 }
 
@@ -47,26 +48,22 @@ sub spawn {
 
   # get subroutines defined by package.
   my @subs;
-  { no strict; 
-  my $stash_name = "main::${package}::";
-  DEBUG && print "stash_name = [$stash_name]\n";
-  *p = *$stash_name;
-  my ($key, $value);
-  while (($key, $value) = each %p) {
-    DEBUG && print "Got package element $_\n";
-    if (defined(*${value}{CODE})) {
-      DEBUG && print "$key is a coderef\n";
-      # is a subroutine
-      my $coderef = *${value}{CODE};
+
+  my $sym = Devel::Symdump->new($package);
+  {
+    no strict 'refs';
+    foreach my $function ($sym->functions) {
+      *p = *$function;
+      my $coderef = *p{CODE};
+      my ($key) = ($function =~ /([^:]*)$/);
       use Data::Dumper;
+      DEBUG && print "Symbol is $function\n";
+      DEBUG && print "key is $key\n";
       DEBUG && print "Coderef is [", Dumper($coderef), "]\n";
-      push @subs, { name => $key, code => $coderef };
-    } else {
-      DEBUG && print "$key is not a coderef\n";
-      # isn't a subroutine
+      push @subs, { name => $key, code => $coderef };      
     }
   }
-  }
+
   my %states;
   foreach my $sub (@subs) {
     DEBUG && print "Building state for ", $sub->{name}, "\n";
@@ -124,6 +121,7 @@ sub build_handler {
 }
 
 1;
+
 __END__
 
 =head1 NAME
@@ -197,8 +195,7 @@ The test scripts are the best place to look for examples of POE::Component::Subw
     # do something with the string returned by Dumper({ a => 1, b => 2})
   }
 
-Data::Dumper is the wrapped module, Dumper is the function called, C<{a
-=> 1, b => 2}> is the data structure that is dumped, and C<$result>
+Data::Dumper is the wrapped module, Dumper is the function called, C<{a =E<gt> 1, b =E<gt> 2}> is the data structure that is dumped, and C<$result>
 is the resulting string form.
 
 =head2 EXPORT

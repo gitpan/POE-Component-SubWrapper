@@ -4,3 +4,9 @@ Revision history for Perl extension POE::Component::SubWrapper.
 	- original version; created by h2xs 1.20 with options
 		-X -n POE::Component::SubWrapper
 
+0.05 
+        - Released to CPAN
+
+0.06 Sat Dec 9 19:40:33 2000
+        - Added dependancy on Devel::Symdump, removed our own glob
+          walking code.
