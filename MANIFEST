@@ -1,9 +1,17 @@
-Changes
-LICENSE
-MANIFEST
-Makefile.PL
-README
-VERSION
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
 lib/POE/Component/SubWrapper.pm
-t/01_require.t
+LICENSE
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+README
+t/00-distribution.t
 t/02_wrap.t
+VERSION
